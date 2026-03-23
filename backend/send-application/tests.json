@@ -1,0 +1,17 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "Отправка без обязательных полей",
+      "method": "POST",
+      "path": "/",
+      "body": {"comment": "test"},
+      "expectedStatus": 400
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import Featured from "@/components/Featured";
 import Goals from "@/components/Goals";
 import Stages from "@/components/Stages";
 import Promo from "@/components/Promo";
+import ApplicationForm from "@/components/ApplicationForm";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -15,6 +16,7 @@ const Index = () => {
       <Goals />
       <Stages />
       <Promo />
+      <ApplicationForm />
       <Footer />
     </main>
   );
