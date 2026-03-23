@@ -9,11 +9,24 @@ export default function Featured() {
         />
       </div>
       <div className="flex-1 text-left lg:h-[800px] flex flex-col justify-center lg:mr-12 lg:order-1">
-        <h3 className="uppercase mb-4 text-sm tracking-wide text-neutral-600">Фестиваль вкусов и эмоций</h3>
+        <h3 className="uppercase mb-4 text-sm tracking-wide text-neutral-600">О курорте Танай</h3>
         <p className="text-2xl lg:text-4xl mb-8 text-neutral-900 leading-tight">
-          Десятки стритфуд-поваров со всей страны собираются на склонах Таная, чтобы угостить тебя блюдами, которые невозможно забыть.
-          Горы, снег и лучшая уличная еда — всё в одном месте.
+          Современный горнолыжный курорт в Кузбассе с хорошо подготовленными трассами, современной инфраструктурой и активной внесезонной жизнью. Место притяжения для всех, кто ценит природу и качественный сервис.
         </p>
+        <div className="flex flex-col gap-3 mb-8">
+          <div className="flex items-start gap-3">
+            <span className="w-2 h-2 rounded-full bg-black mt-2 shrink-0"></span>
+            <p className="text-base text-neutral-700"><strong>Место проведения:</strong> Центральная площадь у подножия основных склонов</p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="w-2 h-2 rounded-full bg-black mt-2 shrink-0"></span>
+            <p className="text-base text-neutral-700"><strong>Формат:</strong> Фудкорты, сцена, зоны отдыха, торговые ряды, мастер-классы шефов</p>
+          </div>
+          <div className="flex items-start gap-3">
+            <span className="w-2 h-2 rounded-full bg-black mt-2 shrink-0"></span>
+            <p className="text-base text-neutral-700"><strong>Аудитория:</strong> Туристы из Новосибирска, Томска, Кемерово и местные жители</p>
+          </div>
+        </div>
         <button className="bg-black text-white border border-black px-4 py-2 text-sm transition-all duration-300 hover:bg-white hover:text-black cursor-pointer w-fit uppercase tracking-wide">
           Стать участником
         </button>

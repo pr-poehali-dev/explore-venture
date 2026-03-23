@@ -27,14 +27,15 @@ export default function Hero() {
       </motion.div>
 
       <div className="relative z-10 text-center text-white px-6">
-        <p className="text-sm md:text-base uppercase tracking-[0.3em] mb-4 opacity-80">Горнолыжный курорт Танай</p>
+        <p className="text-sm md:text-base uppercase tracking-[0.3em] mb-4 opacity-80">Горнолыжный курорт Танай · Кемеровская область</p>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-none">
           ВКУС<br />МОЕЙ УЛИЦЫ
         </h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto opacity-90">
-          Гастрономический фестиваль уличной еды под открытым небом среди снежных вершин
+          Гастрономический фестиваль уличной еды на Центральной площади курорта «Танай» — лучшая еда, горы и живая атмосфера праздника
         </p>
-        <button className="mt-10 border border-white text-white px-8 py-3 uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-all duration-300">
+        <p className="text-sm mt-3 opacity-60 uppercase tracking-widest">#ВкусМоейУлицыТанай</p>
+        <button className="mt-8 border border-white text-white px-8 py-3 uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-all duration-300">
           Узнать подробности
         </button>
       </div>
