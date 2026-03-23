@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 // Дата фестиваля — измени на нужную
-const FESTIVAL_DATE = new Date("2025-08-15T12:00:00");
+const FESTIVAL_DATE = new Date("2026-04-01T12:00:00");
 
 function pad(n: number) {
   return String(n).padStart(2, "0");
