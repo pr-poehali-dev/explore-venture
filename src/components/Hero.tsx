@@ -35,9 +35,6 @@ export default function Hero() {
           Гастрономический фестиваль уличной еды на Центральной площади курорта «Танай» — лучшая еда, горы и живая атмосфера праздника
         </p>
         <p className="text-sm mt-3 opacity-60 uppercase tracking-widest">#ВкусМоейУлицыТанай</p>
-        <button className="mt-8 border border-white text-white px-8 py-3 uppercase tracking-widest text-sm hover:bg-white hover:text-black transition-all duration-300">
-          Узнать подробности
-        </button>
       </div>
     </div>
   );
