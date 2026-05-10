@@ -34,6 +34,8 @@ export default function PelmeniHero() {
       <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-8 text-white/50 text-xs uppercase tracking-widest font-sans">
         <a href="#history" className="hover:text-white transition-colors">История</a>
         <span>·</span>
+        <a href="#recipe" className="hover:text-white transition-colors">Рецептура</a>
+        <span>·</span>
         <a href="#market" className="hover:text-white transition-colors">Анализ рынка</a>
       </div>
     </section>

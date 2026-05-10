@@ -1,24 +1,24 @@
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, RadialBarChart, RadialBar } from 'recharts';
 
 const packagingData = [
-  { name: 'Брендированная\nупаковка', value: 68, fill: '#C0392B' },
-  { name: 'Развесные', value: 32, fill: '#E8E8E8' },
+  { name: 'В упаковке', value: 50, fill: '#4A4068' },
+  { name: 'Развесные', value: 30, fill: '#9B93B8' },
+  { name: 'Все равно', value: 20, fill: '#7B5C8A' },
 ];
 
 const sizeData = [
-  { size: 'Мини', pct: 8 },
-  { size: 'Малые', pct: 18 },
-  { size: 'Средние', pct: 54 },
-  { size: 'Крупные', pct: 15 },
-  { size: 'Гигантские', pct: 5 },
+  { size: 'Нанопельмени', pct: 8, fill: '#B05C5C' },
+  { size: 'Маленькие', pct: 14, fill: '#7B5C8A' },
+  { size: 'Средние', pct: 50, fill: '#4A4068' },
+  { size: 'Крупные', pct: 23, fill: '#C4A882' },
+  { size: 'Гигантские', pct: 10, fill: '#D4B8B8' },
 ];
 
 const meatData = [
-  { name: 'Свинина + говядина', value: 45, fill: '#C0392B' },
-  { name: 'Чистая говядина', value: 22, fill: '#E67E22' },
-  { name: 'Курица', value: 18, fill: '#F1C40F' },
-  { name: 'Свинина', value: 10, fill: '#95A5A6' },
-  { name: 'Другое', value: 5, fill: '#BDC3C7' },
+  { name: 'Мясное ассорти', v3: 3, vFreq: 0 },
+  { name: 'Свинина + Курица', v3: 15, vFreq: 12 },
+  { name: 'Говядина + Свинина', v3: 47, vFreq: 40 },
+  { name: 'Курица + Говядина', v3: 57, vFreq: 50 },
 ];
 
 const weightData = [
@@ -86,31 +86,32 @@ export default function PelmeniMarket() {
             <h3 className="font-display text-2xl font-bold text-[#2C2C2C] mb-2">Упаковка vs Развесные</h3>
             <p className="text-sm text-gray-500 mb-6 font-sans">Предпочтения покупателей в крупных городах, %</p>
             <div className="flex items-center justify-center gap-8">
-              <div className="relative w-40 h-40">
+              <div className="relative w-44 h-44">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
-                    <Pie data={packagingData} cx="50%" cy="50%" innerRadius={45} outerRadius={65} dataKey="value" startAngle={90} endAngle={-270}>
+                    <Pie data={packagingData} cx="50%" cy="50%" innerRadius={50} outerRadius={70} dataKey="value" startAngle={90} endAngle={-270}>
                       {packagingData.map((entry, i) => (
                         <Cell key={i} fill={entry.fill} />
                       ))}
                     </Pie>
+                    <Tooltip formatter={(v) => [`${v}%`, '']} contentStyle={{ fontFamily: 'Inter', fontSize: 12 }} />
                   </PieChart>
                 </ResponsiveContainer>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-display text-2xl font-bold text-[#C0392B]">68%</span>
+                  <span className="font-display text-xl font-bold text-[#4A4068]">Рис.1</span>
                 </div>
               </div>
               <div className="space-y-3">
                 {packagingData.map((d) => (
                   <div key={d.name} className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: d.fill }} />
-                    <span className="text-sm text-gray-700 font-sans">{d.name.replace('\n', ' ')}</span>
+                    <div className="w-3 h-3 rounded-sm flex-shrink-0" style={{ background: d.fill }} />
+                    <span className="text-sm text-gray-700 font-sans">{d.name}</span>
                     <span className="font-bold text-sm ml-auto pl-4">{d.value}%</span>
                   </div>
                 ))}
               </div>
             </div>
-            <Insight text="В крупных городах побеждает брендированная продукция. Развесные берут из-за цены или доверия к конкретному продавцу." />
+            <Insight text="При выборе замороженных продуктов потребитель ориентируется на бренд. Развесные пельмени берут из-за цены или доверия к ритейлеру." />
           </div>
 
           {/* Рис. 2 — Размер */}
@@ -118,19 +119,33 @@ export default function PelmeniMarket() {
             <SectionLabel num="2" text="Рис. 2 · Размер имеет значение" />
             <h3 className="font-display text-2xl font-bold text-[#2C2C2C] mb-2">Предпочтения по размеру</h3>
             <p className="text-sm text-gray-500 mb-6 font-sans">Доля покупателей по размеру пельменей, %</p>
-            <ResponsiveContainer width="100%" height={160}>
-              <BarChart data={sizeData} margin={{ left: -10, right: 0 }}>
-                <XAxis dataKey="size" tick={{ fontSize: 11, fontFamily: 'Inter' }} axisLine={false} tickLine={false} />
-                <YAxis hide />
-                <Tooltip formatter={(v) => [`${v}%`, 'Доля']} contentStyle={{ fontFamily: 'Inter', fontSize: 12 }} />
-                <Bar dataKey="pct" radius={[4, 4, 0, 0]}>
-                  {sizeData.map((entry, i) => (
-                    <Cell key={i} fill={entry.pct === 54 ? '#C0392B' : '#E8E8E8'} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-            <Insight text="Средний размер лидирует с большим отрывом. Производители используют это для создания продуктовых линеек под разные сегменты." />
+            <div className="flex gap-6 items-center justify-center">
+              <div className="relative w-44 h-44">
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie data={sizeData.map(d => ({ name: d.size, value: d.pct, fill: d.fill }))} cx="50%" cy="50%" innerRadius={50} outerRadius={70} dataKey="value" startAngle={90} endAngle={-270}>
+                      {sizeData.map((entry, i) => (
+                        <Cell key={i} fill={entry.fill} />
+                      ))}
+                    </Pie>
+                    <Tooltip formatter={(v) => [`${v}%`, '']} contentStyle={{ fontFamily: 'Inter', fontSize: 12 }} />
+                  </PieChart>
+                </ResponsiveContainer>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="font-display text-xl font-bold text-[#4A4068]">Рис.2</span>
+                </div>
+              </div>
+              <div className="space-y-2">
+                {sizeData.map((d) => (
+                  <div key={d.size} className="flex items-center gap-2">
+                    <div className="w-3 h-3 rounded-sm flex-shrink-0" style={{ background: d.fill }} />
+                    <span className="text-sm text-gray-700 font-sans">{d.size}</span>
+                    <span className="font-bold text-sm ml-auto pl-2">{d.pct}%</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <Insight text="Средние пельмени лидируют с 50%. Данные используются для создания продуктовых линеек под разные сегменты потребителей." />
           </div>
         </div>
 
@@ -138,23 +153,47 @@ export default function PelmeniMarket() {
           {/* Рис. 3 — Начинка */}
           <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
             <SectionLabel num="3" text="Рис. 3 · Состав начинки" />
-            <h3 className="font-display text-2xl font-bold text-[#2C2C2C] mb-2">Выбор мяса</h3>
-            <p className="text-sm text-gray-500 mb-6 font-sans">Предпочтения покупателей по составу начинки, %</p>
-            <div className="space-y-3">
+            <h3 className="font-display text-2xl font-bold text-[#2C2C2C] mb-2">Предпочитаемый состав мясной начинки</h3>
+            <p className="text-sm text-gray-500 mb-6 font-sans">Предпочтения покупателей, %</p>
+            <div className="space-y-4">
               {meatData.map((d) => (
-                <div key={d.name} className="flex items-center gap-3">
-                  <span className="text-sm text-gray-600 w-44 flex-shrink-0 font-sans">{d.name}</span>
-                  <div className="flex-1 bg-gray-200 rounded-full h-2.5 overflow-hidden">
-                    <div
-                      className="h-full rounded-full transition-all duration-700"
-                      style={{ width: `${d.value}%`, background: d.fill }}
-                    />
+                <div key={d.name}>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-xs text-gray-500 font-sans w-40 flex-shrink-0">{d.name}</span>
                   </div>
-                  <span className="text-sm font-bold text-gray-700 w-8 text-right font-sans">{d.value}%</span>
+                  <div className="flex flex-col gap-1">
+                    <div className="flex items-center gap-2">
+                      <div className="flex-1 bg-gray-200 rounded h-5 overflow-hidden relative">
+                        <div
+                          className="h-full rounded transition-all duration-700 flex items-center justify-end pr-2"
+                          style={{ width: `${d.v3}%`, background: '#7B5C8A' }}
+                        >
+                          {d.v3 > 5 && <span className="text-white text-xs font-bold font-sans">{d.v3}%</span>}
+                        </div>
+                      </div>
+                      {d.v3 <= 5 && <span className="text-xs font-bold text-gray-600 font-sans w-8">{d.v3}%</span>}
+                    </div>
+                    {d.vFreq > 0 && (
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1 bg-gray-200 rounded h-5 overflow-hidden relative">
+                          <div
+                            className="h-full rounded transition-all duration-700 flex items-center justify-end pr-2"
+                            style={{ width: `${d.vFreq}%`, background: '#9B93B8' }}
+                          >
+                            <span className="text-white text-xs font-bold font-sans">{d.vFreq}%</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
-            <Insight text="Состав начинки — важнейший фактор выбора. Предпочтения по мясу различаются в зависимости от региона." />
+            <div className="flex gap-4 mt-4">
+              <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-[#7B5C8A]"/><span className="text-xs text-gray-500 font-sans">Покупали за 3 месяца</span></div>
+              <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-sm bg-[#9B93B8]"/><span className="text-xs text-gray-500 font-sans">Покупали чаще</span></div>
+            </div>
+            <Insight text="Состав начинки — важнейший фактор выбора. Курица+говядина и говядина+свинина лидируют по частоте покупок." />
           </div>
 
           {/* Рис. 4 & 5 — Вес и поведение */}
