@@ -1,27 +1,18 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Countdown from "@/components/Countdown";
-import Featured from "@/components/Featured";
-import Goals from "@/components/Goals";
-import Swot from "@/components/Swot";
-import Gallery from "@/components/Gallery";
-import Promo from "@/components/Promo";
-import ApplicationForm from "@/components/ApplicationForm";
-import Footer from "@/components/Footer";
+import PelmeniHero from "@/components/PelmeniHero";
+import PelmeniHistory from "@/components/PelmeniHistory";
+import PelmeniMarket from "@/components/PelmeniMarket";
 
 const Index = () => {
   return (
     <main className="min-h-screen">
-      <Header />
-      <Hero />
-      <Countdown />
-      <Featured />
-      <Goals />
-      <Swot />
-      <Gallery />
-      <Promo />
-      <ApplicationForm />
-      <Footer />
+      <PelmeniHero />
+      <PelmeniHistory />
+      <PelmeniMarket />
+      <footer className="bg-[#2C2C2C] py-8 text-center">
+        <p className="text-gray-500 text-xs font-sans uppercase tracking-widest">
+          Вкусы России · Образовательный проект · 2026
+        </p>
+      </footer>
     </main>
   );
 };
